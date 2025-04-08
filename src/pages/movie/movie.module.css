@@ -1,0 +1,136 @@
+.container {
+    margin: 0px 10px 10px 10px;
+}
+
+
+.movieContainer {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    width: 100%;
+    -webkit-box-shadow: inset 2px -2px 100px 27px rgba(255, 255, 255, 1);
+    -moz-box-shadow: inset 2px -2px 100px 27px rgba(255, 255, 255, 1);
+    box-shadow: inset 2px -2px 100px 27px rgba(255, 255, 255, 1);
+
+}
+
+.posterContainer {
+    flex: 1;
+    margin-left: 20px;
+    margin-top: 10px;
+    max-width: 300px;
+}
+
+.posterContainer img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+
+.detailsContainer {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.description {
+    text-align: left;
+    max-width: 800px;
+    padding: 20px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.description p {
+    margin: 10px 0;
+}
+
+.button {
+    background-color: #fea2f8bf;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 5px;
+}
+
+.button:hover {
+    background-color: #b961b3bf;
+}
+
+
+.input,
+.textarea {
+    width: 90%;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.textarea {
+    height: 100px;
+}
+
+
+.casts {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    max-width: 800px;
+    overflow: hidden;
+
+}
+
+.cast img {
+    width: 100%;
+    height: auto;
+    max-width: 90px;
+    max-height: 90px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+    border-radius: 7px;
+}
+
+.cast img:hover {
+    transform: scale(1.1);
+}
+
+.detileCast {
+    display: flex;
+    flex-direction: column;
+}
+
+@media (max-width: 768px) {
+    .movieContainer {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .posterContainer {
+        max-width: 50%;
+        text-align: center;
+    }
+
+    .detailsContainer {
+        width: 100%;
+    }
+
+    .casts {
+        justify-content: center;
+    }
+
+    .input {
+        margin-left: 20px;
+    }
+
+    .textarea {
+        margin-left: 70px;
+    }
+}

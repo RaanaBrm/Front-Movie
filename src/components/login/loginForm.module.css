@@ -1,0 +1,196 @@
+/* Global Styles */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #2c3e50;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    color: #ecf0f1;
+}
+
+/* Add style for any intermediate container, like a div with ID "root" */
+#root {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Style for the layout container, assuming it's the direct parent of .card */
+.layout-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+h2 {
+    font-size: 26px;
+    color: #ecf0f1;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+}
+
+input,
+button {
+    outline: none;
+}
+
+/* Card Styling */
+.card {
+    background-color: #333;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+    border-radius: 16px;
+    padding: 30px;
+    max-width: 400px;
+    width: 100%;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+}
+
+.card-content {
+    padding: 0;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+/* Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.card {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Form Layout */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+div {
+    margin-bottom: 1rem;
+}
+
+label {
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 8px;
+    color: #bdc3c7;
+    transition: color 0.3s ease, font-size 0.3s ease;
+}
+
+label:hover {
+    color: #3498db;
+}
+
+input {
+    padding: 15px;
+    font-size: 16px;
+    border: 2px solid #444;
+    border-radius: 8px;
+    width: calc(100% - 30px);
+    max-width: 350px;
+    transition:
+        border-color 0.3s ease,
+        box-shadow 0.3s ease,
+        background-color 0.3s ease,
+        color 0.3s ease;
+    background-color: #444;
+    color: #ecf0f1;
+}
+
+input:hover {
+    border-color: #2ecc71;
+}
+
+input:focus {
+    border-color: #3498db;
+    box-shadow:
+        inset -1px -1px rgba(52,152,219,.4),
+        inset .9px .9 rgba(52,152,219,.4);
+}
+
+input::placeholder {
+    color: #bdc3c7;
+}
+
+/* Button Styling */
+button {
+    background-image: linear-gradient(90deg, #3498db, #2ecc71);
+    color: white;
+    padding: 14px;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition:
+        background-color 0.3s ease,
+        transform 0.2s ease,
+        box-shadow 0.3s ease,
+        opacity .2s ease-in-out;
+}
+
+button:hover {
+    transform: scale(1.09);
+}
+
+button:active {
+    background-color: #1d6ca1;
+}
+
+button.disabled {
+    opacity: .5!important;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .card {
+        padding: 20px;
+    }
+
+    h2 {
+        font-size: 24px;
+    }
+
+    label,
+    input,
+    button {
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .card {
+        padding: 18px;
+        width: 90%;
+    }
+
+    h2 {
+        font-size: 20px;
+    }
+
+    label,
+    input,
+    button {
+        font-size: 14px;
+    }
+}
