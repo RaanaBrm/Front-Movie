@@ -3,10 +3,8 @@
 -in termenal write:    npm install 
 -for the running the project write : npm run dev
 
-- Hanna Carlson : Css for single movie Page,respansive for all pages.
-- Naghmeh Ghorashi : route,fetch API,all movies page,single movie page.
-- Ranna Barimani : Usecontext,About us,Gradient
-- Sixten Loven Turden : Add Movie Page
+- I use Tailwind for the css of the website
+
 
 
 
