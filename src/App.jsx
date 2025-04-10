@@ -59,7 +59,7 @@ function App() {
           expires={150}
         >
           We use cookies to improve your experience.{" "}
-          <a href="/privacypolicy" className="text-yellow-400 underline">
+          <a href="/privacy-policy" className="text-yellow-400 underline">
             Learn more
           </a>
         </CookieConsent>
