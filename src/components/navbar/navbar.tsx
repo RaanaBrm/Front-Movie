@@ -11,6 +11,10 @@ import sixtenImage from '../../assets/sixten.jpeg';
 
 function Navbar({ className }: { className?: string }) {
   const [active, setActive] = useState<string | null>(null);
+
+
+
+
   return (
     <div
       className={cn("fixed top-10 inset-x-0 max-w-2xl mx-auto z-50", className)}
@@ -22,8 +26,8 @@ function Navbar({ className }: { className?: string }) {
         {/* Add Privacy Policy link */}
         <HoveredLink to="/privacy-policy">Privacy Policy</HoveredLink> {/* New link */}
 
-        <MenuItem setActive={setActive} active={active} item="We">
-          <div className="text-sm grid grid-cols-2 gap-10 p-4">
+        {/* <MenuItem setActive={setActive} active={active} item="We"> */}
+          {/* <div className="text-sm grid grid-cols-2 gap-10 p-4">
             <ProductItem
               title="Hanna"
               href="https://algochurn.com"
@@ -48,8 +52,8 @@ function Navbar({ className }: { className?: string }) {
               src={sixtenImage}
               description="Respond to government RFPs, RFIs, and RFQs 10x faster using AI"
             />
-          </div>
-        </MenuItem>
+          </div> */}
+        {/* </MenuItem> */}
         
         <MenuItem setActive={setActive} active={active} item="Operation">
           <div className="flex flex-col space-y-4 text-sm">
@@ -58,6 +62,7 @@ function Navbar({ className }: { className?: string }) {
         </MenuItem>
         <ModeToggle />
         <HoveredLink to="/logout">Loug Out</HoveredLink>
+      
       </Menu>
     </div>
   );
