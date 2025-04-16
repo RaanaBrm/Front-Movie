@@ -12,16 +12,25 @@ body {
   color: var(--text-color);
   line-height: 1.6;
   transition: background-color var(--transition-speed) ease;
+  font-weight: bold; /* Make body text bold */
 }
 
 h3,
 h2 {
-  font-weight: 200;
+  font-weight: bold; /* Make headings bold */
   color: #250f2d;
 }
 
+.title {
+  margin-top: 15px;
+  text-align: center;
+  font-size: 1.5rem;
+  transition: font-size var(--transition-speed) ease;
+  font-weight: bold; /* Bold title */
+}
+
 .container {
-  max-width: 800zpx;
+  max-width: 800px;
   margin: 20px auto;
   padding: 10px;
   transition: all var(--transition-speed) ease;
@@ -54,18 +63,12 @@ h2 {
   text-decoration: none;
   color: var(--text-color);
   box-sizing: border-box;
+  font-weight: bold; /* Bold links */
 }
 
 .articles a:hover {
   transform: translateY(-5px);
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-}
-
-.title {
-  margin-top: 15px;
-  text-align: center;
-  font-size: 1.5rem;
-  transition: font-size var(--transition-speed) ease;
 }
 
 .addButton {
@@ -78,10 +81,7 @@ h2 {
   cursor: pointer;
   transition: all var(--transition-speed) ease;
   border-radius: 4px;
-}
-
-.addButton:hover {
-  background-color: var(--secondary-color);
+  font-weight: bold; /* Bold button */
 }
 
 form {
@@ -98,6 +98,7 @@ textarea {
   border: 1px solid #ddd;
   transition: all var(--transition-speed) ease;
   border-radius: 4px;
+  font-weight: bold; /* Bold input text */
 }
 
 textarea {
@@ -119,6 +120,7 @@ textarea:focus {
   transition: all var(--transition-speed) ease;
   border-radius: 4px;
   margin-right: 20px;
+  font-weight: bold; /* Bold submit button */
 }
 
 .submitContainer {
@@ -130,6 +132,7 @@ textarea:focus {
   background-color: var(--primary-color);
 }
 
+/* Responsive design: tablets and below */
 @media (max-width: 768px) {
   .container {
     margin: 10px auto;
@@ -161,6 +164,7 @@ textarea:focus {
   }
 }
 
+/* Extra small screens */
 @media (max-width: 400px) {
   .title {
     font-size: 1rem;
