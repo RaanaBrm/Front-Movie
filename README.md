@@ -3,6 +3,8 @@
 -in termenal write: npm install
 -for the running the project write : npm run dev
 
+- for login you have to used : Email: "raana.barimani@hyperisland.se" and Password: "123"
+
 - change the css and use Tailwind
 
 Currently, two official plugins are available:
