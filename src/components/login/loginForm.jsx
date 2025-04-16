@@ -1,28 +1,31 @@
-import React, { useContext, useState } from "react";
+import React, { useState, useContext } from "react";
+import { MoviesContext } from "../../context/MoviesContext"; // Import MoviesContext
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-
-import { MoviesContext } from "../../context/MoviesContext";
 import style from "./loginForm.module.css";
 
+// Login form component
 const LoginForm = () => {
-    const { handleLogin } = useContext(MoviesContext);
+    const { handleLogin } = useContext(MoviesContext); // Get handleLogin function from context
 
     const [loginformData, setLoginFormData] = useState({
         email: "",
         password: "",
     });
 
+    // Handle input change to update form data
     const handleChange = (e) => {
         const { name, value } = e.target;
         setLoginFormData({ ...loginformData, [name]: value });
-    }
+    };
 
+    // Handle login request
     const handleLoginRequest = (event) => {
         event.preventDefault();
 
+        // Check if the email and password fields are filled
         if (!loginformData.email || !loginformData.password) {
             alert("Please fill in all the required fields");
             return;
@@ -33,8 +36,8 @@ const LoginForm = () => {
             password: loginformData.password,
         };
 
-        handleLogin(loginData);
-    }
+        handleLogin(loginData); // Call the handleLogin function to send the login data
+    };
 
     return (
         <section role="main" aria-labelledby="login-form-title" className="w-full max-w-md mx-auto mt-8">

@@ -11,9 +11,10 @@ import sixtenImage from '../../assets/sixten.jpeg';
 
 function Navbar({ className }: { className?: string }) {
   const [active, setActive] = useState<string | null>(null);
-
-
-
+  
+  const isLoggedIn = () => {
+    return localStorage.getItem("token") != undefined;
+  }
 
   return (
     <div
@@ -61,8 +62,9 @@ function Navbar({ className }: { className?: string }) {
           </div>
         </MenuItem>
         <ModeToggle />
+        {isLoggedIn() && 
         <HoveredLink to="/logout">Loug Out</HoveredLink>
-      
+        }
       </Menu>
     </div>
   );

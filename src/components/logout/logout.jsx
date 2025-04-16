@@ -6,7 +6,7 @@ const Logout = () => {
 
     handlLogout()
     return (
-        <div>Logging out...</div>
+        <div></div>
     );
 };
 
