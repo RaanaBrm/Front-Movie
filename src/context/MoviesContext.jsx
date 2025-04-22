@@ -46,9 +46,32 @@ export const MoviesProvider = ({ children }) => {
 				console.error("Failed to log in:", error);
 			});
 	};
+	// Handle Delete
+	const handleDelete = (id) => {
+		let token = localStorage.getItem("token");
+		if (!token) {
+			console.error("No token provided for adding movie.");
+			return;
+		}
+		setToken(token);
 
+		axios
+			.delete(`http://localhost:6603/movies/${id}`, {
+				headers: {
+					Authorization: `Bearer ${token}`,
+				}
+			})
+			.then(() => {
+				const updatedMovies = movies.filter((movie) => movie._id !== id);
+				console.log(updatedMovies);
+				setMovies(updatedMovies);
+			})
+			.catch((error) => {
+				console.error("Error deleting movie:", error);
+			});
+	};
 	return (
-		<MoviesContext.Provider value={{ movies, loading, token, handleLogin, handlLogout }}>
+		<MoviesContext.Provider value={{ movies, loading, token, handleLogin, handlLogout, handleDelete }}>
 			{children}
 		</MoviesContext.Provider>
 	);

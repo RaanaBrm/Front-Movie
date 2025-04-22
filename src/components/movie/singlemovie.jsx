@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
+
 import style from "./singlemovie.module.css"
 
 function Singlemovie({ article, handleDelete }) {
@@ -8,6 +9,7 @@ function Singlemovie({ article, handleDelete }) {
     const confirmDelete = (movieId) => {
         setShowConfirm(false);
         handleDelete(movieId);
+
     };
 
     return (
