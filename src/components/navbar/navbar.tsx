@@ -3,18 +3,17 @@ import { HoveredLink, Menu, MenuItem, ProductItem } from "../ui/navbar-menu";
 import { ModeToggle } from "../theme/mode-toggle";
 import { cn } from "@/lib/utils";
 
-
-import hannaImage from '../../assets/hanna.jpeg';
-import naghmehImage from '../../assets/naghmeh.jpeg';
-import raanaImage from '../../assets/raana.jpeg';
-import sixtenImage from '../../assets/sixten.jpeg';
+import hannaImage from "../../assets/hanna.jpeg";
+import naghmehImage from "../../assets/naghmeh.jpeg";
+import raanaImage from "../../assets/raana.jpeg";
+import sixtenImage from "../../assets/sixten.jpeg";
 
 function Navbar({ className }: { className?: string }) {
   const [active, setActive] = useState<string | null>(null);
-  
+
   const isLoggedIn = () => {
     return localStorage.getItem("token") != undefined;
-  }
+  };
 
   return (
     <div
@@ -25,10 +24,10 @@ function Navbar({ className }: { className?: string }) {
         <HoveredLink to="/movies">All Movies</HoveredLink>
         <HoveredLink to="/aboutus">About Us</HoveredLink>
         {/* Add Privacy Policy link */}
-        <HoveredLink to="/privacy-policy">Privacy Policy</HoveredLink> {/* New link */}
-
+        <HoveredLink to="/privacy-policy">Privacy Policy</HoveredLink>{" "}
+        {/* New link */}
         {/* <MenuItem setActive={setActive} active={active} item="We"> */}
-          {/* <div className="text-sm grid grid-cols-2 gap-10 p-4">
+        {/* <div className="text-sm grid grid-cols-2 gap-10 p-4">
             <ProductItem
               title="Hanna"
               href="https://algochurn.com"
@@ -55,16 +54,13 @@ function Navbar({ className }: { className?: string }) {
             />
           </div> */}
         {/* </MenuItem> */}
-        
         <MenuItem setActive={setActive} active={active} item="Operation">
           <div className="flex flex-col space-y-4 text-sm">
             <HoveredLink to="/add">Add New</HoveredLink>
           </div>
         </MenuItem>
         <ModeToggle />
-        {isLoggedIn() && 
-        <HoveredLink to="/logout">Loug Out</HoveredLink>
-        }
+        {isLoggedIn() && <HoveredLink to="/logout">Loug Out</HoveredLink>}
       </Menu>
     </div>
   );

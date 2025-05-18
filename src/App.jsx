@@ -13,8 +13,10 @@ import Aboutus from './pages/about us/aboutus';
 import PrivacyPolicy from "./pages/PrivacyPolicy.js/PrivacyPolicy";
 import Logout from "./components/logout/logout";
 
+
 import Wrapper from "./components/container/container";
 import CookieConsent from "react-cookie-consent"; // ✅ CookieConsent import
+
 
 function App() {
   return (

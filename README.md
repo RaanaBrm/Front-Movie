@@ -2,6 +2,7 @@
 
 -in termenal write: npm install
 -for the running the project write : npm run dev
+-Use Google Chrome not SAFARI
 
 - for login you have to used : Email: "raana.barimani@hyperisland.se" and Password: "123"
 

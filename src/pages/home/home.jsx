@@ -7,10 +7,10 @@ function Home() {
         <main>
             <section className={cn("relative z-20")}>
                 {/* Link to add new movie page with aria-label for better accessibility */}
-                <Link 
-                    className={style.LinkButtom} 
-                    to="/add" 
-                    tabIndex="0" 
+                <Link
+                    className={style.LinkButtom}
+                    to="/add"
+                    tabIndex="0"
                     aria-label="Add a new movie"
                 >
                     Add New Movie

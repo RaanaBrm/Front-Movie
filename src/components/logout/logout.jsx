@@ -1,13 +1,14 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from "react";
 import { MoviesContext } from "../../context/MoviesContext";
 
 const Logout = () => {
-    const { handlLogout } = useContext(MoviesContext)
+    const { handleLogout } = useContext(MoviesContext);
 
-    handlLogout()
-    return (
-        <div></div>
-    );
+    useEffect(() => {
+        handleLogout();
+    }, []);
+
+    return <div></div>;
 };
 
 export default Logout;

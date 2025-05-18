@@ -1,6 +1,5 @@
 import React, { Suspense, useContext } from 'react';
 const Singlemovie = React.lazy(() => import('../../components/movie/singlemovie'));
-
 import { MoviesContext } from "../../context/MoviesContext";
 
 function Movies() {
@@ -12,13 +11,17 @@ function Movies() {
                 {loading ? (
                     <div className="text-white text-center text-lg">Loading...</div>
                 ) : (
-                    <div className="grid grid-cols-[repeat(auto-fit,minmax(250px,1fr))] place-items-center gap-6 px-4 max-w-screen-xl mx-auto p-5">
-                        {movies.map((movie) => (
-                            <Suspense fallback={<div>Loading movie...</div>} key={movie._id}>
-                                <Singlemovie article={movie} handleDelete={handleDelete} />
-                            </Suspense>
-                        ))}
-                    </div>
+                    <Suspense fallback={<div className="text-white text-center">Loading movies...</div>}>
+                        <div className="grid grid-cols-[repeat(auto-fit,minmax(250px,1fr))] place-items-center gap-6 px-4 max-w-screen-xl mx-auto p-5">
+                            {movies.map((movie, index) => (
+                                <Singlemovie
+                                    article={movie}
+                                    handleDelete={handleDelete}
+                                    key={movie._id || index}
+                                />
+                            ))}
+                        </div>
+                    </Suspense>
                 )}
             </section>
         </main>

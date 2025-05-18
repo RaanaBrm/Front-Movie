@@ -1,30 +1,20 @@
-import { useContext, useState, useEffect } from "react";
+import { useContext, useState } from "react";
 import { cn } from "@/lib/utils";
-
+import { Helmet } from "react-helmet";
 import style from "./add.module.css";
-import styled from "./add.module.css";
-
 import { MoviesContext } from "../../context/MoviesContext";
-
 import LoginForm from "../../components/login/loginForm";
 
 function Add() {
 	const getDate = () => {
 		const date = new Date();
-		const day = date.getDate();
-		const month = date.getMonth() + 1;
+		const day = String(date.getDate()).padStart(2, "0");
+		const month = String(date.getMonth() + 1).padStart(2, "0");
 		const year = date.getFullYear();
-		if (month < 10) {
-			const today = `${year}-0${month}-${day}`;
-			console.log(today)
-			return today;
-		} else {
-			const today = `${year}-${month}-${day}`
-			console.log(today)
-			return today;
-		}
+		return `${year}-${month}-${day}`;
 	};
-	const { movies, handleAdd, token } = useContext(MoviesContext);
+
+	const { token, handleAdd } = useContext(MoviesContext);
 
 	const [movieData, setMovieData] = useState({
 		original_title: "",
@@ -33,16 +23,14 @@ function Add() {
 		vote_average: "",
 	});
 
+	const [message, setMessage] = useState("");
+
 	const handleChange = (e) => {
 		const { name, value } = e.target;
 		setMovieData({ ...movieData, [name]: value });
 	};
 
-	useEffect(() => {
-		console.log(movies);
-	}, [movies]);
-
-	const addMovie = (event, movieData) => {
+	const submitMovie = async (event) => {
 		event.preventDefault();
 
 		if (
@@ -51,40 +39,39 @@ function Add() {
 			!movieData.release_date ||
 			!movieData.vote_average
 		) {
-			alert("Please fill in all the required fields");
+			setMessage("Please fill in all the required fields.");
 			return;
 		}
 
-		const newMovie = {
-			id: movies.length + 101,
-			original_title: movieData.original_title,
-			overview: movieData.overview,
-			release_date: movieData.release_date,
-			vote_average: movieData.vote_average,
-		};
-		console.log(newMovie);
-		handleAdd(newMovie);
-
-		setMovieData({
-			original_title: "",
-			overview: "",
-			release_date: getDate(),
-			vote_average: 0,
-		});
+		try {
+			await handleAdd(movieData);
+			setMessage("✅ Movie added successfully!");
+			setMovieData({
+				original_title: "",
+				overview: "",
+				release_date: getDate(),
+				vote_average: "",
+			});
+		} catch (error) {
+			console.error("Error adding movie:", error);
+			setMessage("❌ Failed to add movie. Please try again.");
+		}
 	};
 
 	return (
 		<div className={cn("relative z-20")}>
+			<Helmet>
+				<title>Add Movie | Movie App</title>
+				<meta name="description" content="Add a new movie to your collection." />
+			</Helmet>
 
 			<div className={style.add}>
-				{/* write ur code here */}
-				<div className={styled.container}>
-					<div className={styled.wrapper}>
-						{token
-							?
+				<div className={style.container}>
+					<div className={style.wrapper}>
+						{token ? (
 							<>
 								<h2>Add New Movie</h2>
-								<form action="" onSubmit={() => addMovie(event, movieData)}>
+								<form onSubmit={submitMovie}>
 									<h3>Title :</h3>
 									<input
 										type="text"
@@ -92,6 +79,7 @@ function Add() {
 										value={movieData.original_title}
 										onChange={handleChange}
 										className={style.textInput}
+										required
 									/>
 
 									<h3>Release Date:</h3>
@@ -100,7 +88,9 @@ function Add() {
 										name="release_date"
 										value={movieData.release_date}
 										onChange={handleChange}
+										required
 									/>
+
 									<h3>Rating :</h3>
 									<input
 										type="number"
@@ -109,27 +99,45 @@ function Add() {
 										name="vote_average"
 										value={movieData.vote_average}
 										onChange={handleChange}
+										required
 									/>
+
 									<h3>Description :</h3>
 									<textarea
-
-										type="text"
 										name="overview"
 										value={movieData.overview}
 										onChange={handleChange}
 										className={style.textInput}
-
+										required
 									/>
-									<br />
+
 									<div className={style.submitContainer}>
-										<button className={style.submitButton} type="submit" aria-label="Add" tabIndex={0}>
+										<button
+											className={`${style.submitButton} focus:outline focus:outline-2 focus:outline-blue-500 focus:outline-offset-2`}
+											type="submit"
+											aria-label="Add"
+											tabIndex={0}
+										>
 											Submit
-										</button></div>
+										</button>
+									</div>
+
+									{message && (
+										<p
+											aria-live="polite"
+											style={{
+												marginTop: "1rem",
+												color: message.includes("✅") ? "green" : "crimson",
+											}}
+										>
+											{message}
+										</p>
+									)}
 								</form>
 							</>
-							:
+						) : (
 							<LoginForm />
-						}
+						)}
 					</div>
 				</div>
 			</div>
@@ -138,9 +146,3 @@ function Add() {
 }
 
 export default Add;
-
-// When you want to create the submit button, use : <<aria-label="Add">> and <<tabIndex="0" >>
-// Since we are using useContext, you should define the addhandle function inside the context.
-// Then, you can call it from your component using the context.
-// This approach helps centralize logic, makes the code cleaner, and avoids passing props unnecessarily.
-//
