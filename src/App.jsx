@@ -13,10 +13,8 @@ import Aboutus from './pages/about us/aboutus';
 import PrivacyPolicy from "./pages/PrivacyPolicy.js/PrivacyPolicy";
 import Logout from "./components/logout/logout";
 
-
 import Wrapper from "./components/container/container";
-import CookieConsent from "react-cookie-consent"; // ✅ CookieConsent import
-
+import CookieConsent from "react-cookie-consent";
 
 function App() {
   return (
@@ -39,7 +37,6 @@ function App() {
           </MoviesProvider>
         </Wrapper>
 
-        {/* ✅ Cookie Consent Banner */}
         <CookieConsent
           location="bottom"
           buttonText="Accept"

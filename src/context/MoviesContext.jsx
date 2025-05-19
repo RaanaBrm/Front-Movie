@@ -13,11 +13,13 @@ export const MoviesProvider = ({ children }) => {
 		setToken(storedToken);
 
 		axios
-			.get("http://localhost:6603/movies", {
-				headers: storedToken ? { Authorization: `Bearer ${storedToken}` } : {},
-			})
+			.get("http://localhost:6603/movies")
 			.then((result) => {
-				setMovies(result.data.data.movies);
+				const rawMovies = result.data?.data?.movies;
+				const cleanedMovies = Array.isArray(rawMovies)
+					? rawMovies.filter((m) => m && m._id)
+					: [];
+				setMovies(cleanedMovies);
 				setLoading(false);
 			})
 			.catch((error) => {
@@ -30,10 +32,10 @@ export const MoviesProvider = ({ children }) => {
 		axios
 			.post("http://localhost:6603/auth/login", loginRequest)
 			.then((result) => {
-				const receivedToken = result.data.token;
-				setToken(receivedToken);
-				localStorage.setItem("token", receivedToken);
+				setToken(result.data.token);
+				localStorage.setItem("token", result.data.token);
 				console.log("User logged in successfully");
+				window.location.reload(); // تا context دوباره token رو بگیره
 			})
 			.catch((error) => {
 				console.error("Failed to log in:", error);
@@ -58,7 +60,9 @@ export const MoviesProvider = ({ children }) => {
 				},
 			})
 			.then(() => {
-				const updatedMovies = movies.filter((movie) => movie._id !== id);
+				const updatedMovies = movies.filter(
+					(movie) => movie && movie._id !== id
+				);
 				setMovies(updatedMovies);
 			})
 			.catch((error) => {
@@ -78,19 +82,25 @@ export const MoviesProvider = ({ children }) => {
 					Authorization: `Bearer ${token}`,
 				},
 			})
-			.then(() => {
-				console.log("Movie added successfully. Fetching updated list...");
-				return axios.get("http://localhost:6603/movies", {
-					headers: {
-						Authorization: `Bearer ${token}`,
-					},
-				});
-			})
 			.then((res) => {
-				setMovies(res.data.data.movies);
+				const addedId = res.data?.data?._id;
+				if (addedId) {
+					axios
+						.get(`http://localhost:6603/movies/${addedId}`)
+						.then((result) => {
+							const fullMovie = result.data?.data;
+							if (fullMovie && fullMovie._id) {
+								setMovies([...movies, fullMovie]);
+								console.log("Movie added:", fullMovie);
+							}
+						})
+						.catch((err) => {
+							console.error("Error fetching new movie:", err);
+						});
+				}
 			})
 			.catch((error) => {
-				console.error("Error adding movie or fetching updated list:", error);
+				console.error("Error adding movie:", error);
 			});
 	};
 

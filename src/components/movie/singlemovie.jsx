@@ -42,16 +42,14 @@ function Singlemovie({ article, handleDelete }) {
                         setShowConfirm(true);
                     }}
                     className="absolute top-2 right-2 z-20 px-3 py-1 text-xs sm:text-sm flex items-center gap-1 
-                           bg-gradient-to-r from-red-600 via-pink-600 to-red-700 
-                           hover:from-red-700 hover:to-pink-700 
-                           text-white font-medium rounded-md shadow-md 
-                           transition-all duration-300 backdrop-blur-sm cursor-pointer"
-                >
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 7L5 7M6 7l1 12a2 2 0 002 2h6a2 2 0 002-2l1-12M9 7V4a1 1 0 011-1h4a1 1 0 011 1v3" />
-                    </svg>
-                    Delete
-                </button>
+         bg-gradient-to-r from-red-600 via-pink-600 to-red-700 
+         hover:from-red-700 hover:to-pink-700 
+         text-white font-medium rounded-md shadow-md 
+         transition-all duration-300 backdrop-blur-sm cursor-pointer
+         focus:outline-none focus:ring-2 focus:ring-red-400 focus:ring-offset-2"
+                    aria-label="Delete movie"
+                />
+
 
                 {/* Confirmation Modal */}
                 {showConfirm && (

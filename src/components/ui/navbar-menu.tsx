@@ -1,5 +1,5 @@
 import React from "react";
-import { motion } from "framer-motion"; // اصلاح ایمپورت motion
+import { motion } from "framer-motion"; // motion
 import { Link } from "react-router-dom";
 
 const transition = {
