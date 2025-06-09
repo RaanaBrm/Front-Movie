@@ -1,14 +1,22 @@
 .LinkButtom {
-    display: block;
-    width: 250px;
-    height: 50px;
-    background-color: #fea2f8bf;
-    color: white;
-    text-align: center;
-    line-height: 50px;
-    text-decoration: none;
-    border-radius: 5px;
-    margin: 0 auto;
-    margin-top: 100px;
-    z-index: 1000;
+  display: block;
+  width: 250px;
+  height: 50px;
+  background-color: #fea2f8bf; /* soft pink background */
+  color: white;
+  text-align: center;
+  line-height: 50px;
+  text-decoration: none;
+  border-radius: 5px;
+  margin: 0 auto;
+  margin-top: 100px;
+  z-index: 1000;
+  transition: all 0.3s ease;
+}
+
+/* Extra-visible focus effect */
+.LinkButtom:focus {
+  outline: 4px solid #ffffff; /* bright white border */
+  outline-offset: 3px;
+  box-shadow: 0 0 12px 6px rgba(255, 255, 255, 0.9); /* bright glowing ring */
 }
