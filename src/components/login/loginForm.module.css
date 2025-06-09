@@ -10,7 +10,7 @@ body {
   color: #ecf0f1;
 }
 
-/* Add style for any intermediate container, like a div with ID "root" */
+/* Root Container */
 #root {
   width: 100%;
   height: 100%;
@@ -19,7 +19,7 @@ body {
   align-items: center;
 }
 
-/* Style for the layout container, assuming it's the direct parent of .card */
+/* Layout Wrapper */
 .layout-container {
   display: flex;
   justify-content: center;
@@ -28,6 +28,7 @@ body {
   height: 100%;
 }
 
+/* Headings */
 h2 {
   font-size: 26px;
   color: #ecf0f1;
@@ -47,6 +48,7 @@ h2 {
   display: flex;
   flex-direction: column;
   align-items: center;
+  animation: fadeIn 0.5s ease-in-out;
 }
 
 .card:hover {
@@ -59,7 +61,7 @@ h2 {
   overflow: hidden;
 }
 
-/* Animation */
+/* Fade In Animation */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -69,10 +71,6 @@ h2 {
     opacity: 1;
     transform: translateY(0);
   }
-}
-
-.card {
-  animation: fadeIn 0.5s ease-in-out;
 }
 
 /* Form Layout */
@@ -98,6 +96,7 @@ label:hover {
   color: #3498db;
 }
 
+/* Input Styling */
 input {
   padding: 15px;
   font-size: 16px;
@@ -115,16 +114,16 @@ input:hover {
   border-color: #2ecc71;
 }
 
-input:focus {
-  border-color: #3498db;
-  outline: 2px solid #3498db;
-  outline-offset: 2px;
-  box-shadow: inset -1px -1px rgba(52, 152, 219, 0.4),
-    inset 0.9px 0.9px rgba(52, 152, 219, 0.4);
-}
-
 input::placeholder {
   color: #bdc3c7;
+}
+
+/* 🔥 High-contrast, intense FOCUS state for input */
+input:focus {
+  border-color: #ffffff;
+  outline: 4px solid #ffffff;
+  outline-offset: 4px;
+  box-shadow: 0 0 12px 6px rgba(255, 255, 255, 0.9);
 }
 
 /* Button Styling */
@@ -148,17 +147,19 @@ button:active {
   background-color: #1d6ca1;
 }
 
+/* 🔥 High-contrast, intense FOCUS state for buttons */
 button:focus {
-  outline: 2px solid #2ecc71;
-  outline-offset: 2px;
-  box-shadow: 0 0 0 3px rgba(46, 204, 113, 0.5);
+  outline: 4px solid #ffffff;
+  outline-offset: 4px;
+  box-shadow: 0 0 12px 6px rgba(255, 255, 255, 0.9);
 }
 
+/* Disabled button */
 button.disabled {
   opacity: 0.5 !important;
 }
 
-/* Mobile Responsiveness */
+/* Responsive Design */
 @media (max-width: 768px) {
   .card {
     padding: 20px;
