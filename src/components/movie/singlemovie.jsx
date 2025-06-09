@@ -42,14 +42,15 @@ function Singlemovie({ article, handleDelete }) {
                         setShowConfirm(true);
                     }}
                     className="absolute top-2 right-2 z-20 px-3 py-1 text-xs sm:text-sm flex items-center gap-1 
-         bg-gradient-to-r from-red-600 via-pink-600 to-red-700 
-         hover:from-red-700 hover:to-pink-700 
-         text-white font-medium rounded-md shadow-md 
-         transition-all duration-300 backdrop-blur-sm cursor-pointer
-         focus:outline-none focus:ring-2 focus:ring-red-400 focus:ring-offset-2"
+    bg-gradient-to-r from-red-600 via-pink-600 to-red-700 
+    hover:from-red-700 hover:to-pink-700 
+    text-white font-medium rounded-md shadow-md 
+    transition-all duration-300 backdrop-blur-sm cursor-pointer
+    focus:outline-none focus:ring-2 focus:ring-red-400 focus:ring-offset-2"
                     aria-label="Delete movie"
-                />
-
+                >
+                    Delete
+                </button>
 
                 {/* Confirmation Modal */}
                 {showConfirm && (

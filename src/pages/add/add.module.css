@@ -84,6 +84,12 @@ h2 {
   font-weight: bold; /* Bold button */
 }
 
+.addButton:focus {
+  outline: 2px solid var(--secondary-color);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 3px rgba(254, 162, 248, 0.4);
+}
+
 form {
   margin-top: 15px;
   transition: margin var(--transition-speed) ease;
@@ -109,6 +115,8 @@ input:focus,
 textarea:focus {
   border-color: var(--secondary-color);
   box-shadow: 0 0 5px rgba(254, 162, 248, 0.5);
+  outline: 2px solid var(--secondary-color);
+  outline-offset: 2px;
 }
 
 .submitButton {
@@ -123,13 +131,19 @@ textarea:focus {
   font-weight: bold; /* Bold submit button */
 }
 
+.submitButton:hover {
+  background-color: var(--primary-color);
+}
+
+.submitButton:focus {
+  outline: 2px solid var(--secondary-color);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 3px rgba(254, 162, 248, 0.4);
+}
+
 .submitContainer {
   display: flex;
   justify-content: flex-end;
-}
-
-.submitButton:hover {
-  background-color: var(--primary-color);
 }
 
 /* Responsive design: tablets and below */
