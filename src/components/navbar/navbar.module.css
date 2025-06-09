@@ -1,53 +1,57 @@
+/* Style for list items inside the navbar */
 li {
-    padding-left: 15px;
-
+  padding-left: 15px;
 }
 
-
-
+/* Main navbar container */
 .navbar {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    justify-content: space-around;
-
-    padding: 20px 20px;
-
-    width: 100%;
-    height: 100%;
-
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  padding: 20px 20px;
+  width: 100%;
+  height: 100%;
 }
 
+/* Link styling inside the navbar */
 .link {
-
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-
-
-
-    color: rgb(23, 23, 22);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  color: rgb(23, 23, 22);
+  text-decoration: none;
+  transition: all 0.3s ease;
 }
 
+/* Accessibility: visible focus outline for keyboard navigation */
+.link:focus {
+  outline: 2px solid #fea2f8;
+  outline-offset: 2px;
+  box-shadow: 0 0 0 3px rgba(254, 162, 248, 0.4);
+}
+
+/* Visual feedback on hover */
+.link:hover {
+  color: #86198f;
+}
+
+/* Responsive adjustments for tablets and smaller screens */
 @media (max-width: 768px) {
-    .navbar {
-        display: flex;
-        justify-content: center;
-        align-items: center;
+  .navbar {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin-right: 5px;
+  }
 
-        width: 100%;
+  /* Hide paragraph tags inside navbar for small screens */
+  .navbar p {
+    display: none;
+  }
 
-        gap: 15px;
-        margin-right: 5px;
-
-        p {
-            display: none;
-        }
-
-        ul {
-            margin-right: 40px;
-        }
-    }
-
-
+  /* Adjust spacing for unordered list inside navbar */
+  .navbar ul {
+    margin-right: 40px;
+  }
 }
